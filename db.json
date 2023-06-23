@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "credential": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg1YmE5MzEzZmQ3YTdkNGFmYTg0ODg0YWJjYzg0MDMwMDQzNjMxODAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2ODY0MTEyMTUsImF1ZCI6Ijc0MDkwMjY4MjczNC1ocmpnZWRiZzM0bmhzNWMwamhkNHNtdTFxYzZibjhvNC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMDA3NjYyNjA3MDU4OTg0MDczOCIsImVtYWlsIjoidWpqYmFsZ3VwdGFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF6cCI6Ijc0MDkwMjY4MjczNC1ocmpnZWRiZzM0bmhzNWMwamhkNHNtdTFxYzZibjhvNC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsIm5hbWUiOiJVamp3YWwgS3VtYXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUFjSFR0Y1ZjMTdOM0k0UGx6MGFHOWM4Y18wUmtvNWZPRG5yeC1IbWpIN3I9czk2LWMiLCJnaXZlbl9uYW1lIjoiVWpqd2FsIiwiZmFtaWx5X25hbWUiOiJLdW1hciIsImlhdCI6MTY4NjQxMTUxNSwiZXhwIjoxNjg2NDE1MTE1LCJqdGkiOiJlM2VkMzdmOTg5YzZlYTczZWZjNzBmNzAyM2MwMjdmMDM2YTIwZmE3In0.TvQBg4cV-BxotD0aYbIkU9wGl6YHrFX_IaT-cr_k7Y-RQhJntZ4LMCMQ4f4S0EqS6I0nqSkdmaPXz0jn6Y69Q3dgcIPqeXWP0ecPvRPBG2KqXAZAhcVwCwsyB4VNnkY0fN7Z_980JwcWgSuQcsgSaweUofX4CwjwutLYrhlzD47WHBp5TvyvowfhGbMO6dhdrwgAa-1fQM2RqwKTkr7J4YXwQ_IPt3k_1BYW-JTMkTkVC9y2I3skfmDCHgEVaNe7Ds_BK079lTJeoNmnzMrvs6_sJA7oUg4PAcwXDnkw8Qr8IboReqg4Hcufggm0QsKL7iaC5KXAw7_oN5S61nOyDA",
+      "g_csrf_token": "a517145d3be63984",
+      "id": 2
+    },
+    {
+      "credential": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg1YmE5MzEzZmQ3YTdkNGFmYTg0ODg0YWJjYzg0MDMwMDQzNjMxODAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2ODY0MTEyNTQsImF1ZCI6Ijc0MDkwMjY4MjczNC1ocmpnZWRiZzM0bmhzNWMwamhkNHNtdTFxYzZibjhvNC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMDA3NjYyNjA3MDU4OTg0MDczOCIsImVtYWlsIjoidWpqYmFsZ3VwdGFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF6cCI6Ijc0MDkwMjY4MjczNC1ocmpnZWRiZzM0bmhzNWMwamhkNHNtdTFxYzZibjhvNC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsIm5hbWUiOiJVamp3YWwgS3VtYXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUFjSFR0Y1ZjMTdOM0k0UGx6MGFHOWM4Y18wUmtvNWZPRG5yeC1IbWpIN3I9czk2LWMiLCJnaXZlbl9uYW1lIjoiVWpqd2FsIiwiZmFtaWx5X25hbWUiOiJLdW1hciIsImlhdCI6MTY4NjQxMTU1NCwiZXhwIjoxNjg2NDE1MTU0LCJqdGkiOiIwMDJjODNhZTIzYTYwOGNmZjA2MDljMWY1ZjMwNjkwNWVlYmMzODRlIn0.MLwpEcjf6ON52Sga0mTUw6T_wCiispZn7Ji35fhn-FB0KwAvIqOxz4Dc5-C24CZECD1Pt_11ueKqWVBtF1U4kbt0b05RlGfHNrpKm6Q0c3WXIKEhaohHUBgCG3irNetoXnOJV0WqqHePtX-xzFTL4ObCspJyVq7oBYTBCwulJ-dKa7eOqcPNwrLWOxwgk40aNz4DleG63Mk-nM7YmfUS4Rqcdqlrj9gmIgTB2VBMAZSbefAXp3EcFXPQeyiMrJhmD2lMVO0y7Lgsl6xvyFgWJNeAhXGA0P0v-htMf5p3d7QW4YRVCBUuEG3tBB1XHMMPMbYZ-qavHirNLfLLAvlepw",
+      "g_csrf_token": "b821d77dbd1fba6e",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,0 +1,42 @@
+
+
+<div class="row">
+    <div class="row">
+        <h2>Channel dashboard</h2>
+    </div>
+    <div class="col-4">
+        <mat-card class="example-card">
+           <div class="row p-2 m-0">
+                Latest Video Performance
+           </div>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of
+            a Shiba Inu">
+
+            <div class="row p-3">
+                    <div>
+                        <p>Views</p>
+                        <a [routerLink]="['admin/analytics']">Go to video Analytics</a><br><br>
+                    </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-4">
+        <mat-card class="example1-card">
+            <mat-card-header>
+                <mat-card-title>Channel Analytics</mat-card-title>
+                <mat-card-subtitle>Current Subscribers</mat-card-subtitle><br>
+            </mat-card-header>
+            <mat-card-content>
+                <h1>0</h1><br>
+            <hr>
+            <mat-card-title>Summery</mat-card-title>
+                <mat-card-subtitle>Last 28 Days</mat-card-subtitle>
+                <p>View</p>
+                <hr>
+            <mat-card-title>Top Videos</mat-card-title>
+            <mat-card-subtitle>48 Hours - views</mat-card-subtitle><br>
+            <a [routerLink]="['admin/analytics']">Go to video Analytics</a>
+            </mat-card-content>
+         </mat-card>
+    </div>
+</div>

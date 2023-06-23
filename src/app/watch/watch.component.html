@@ -1,0 +1,212 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7 p-0 m-0 mb-5">
+            <div class="row p-0 m-0">
+                <video #videoPlayer src="{{src}}"  autoplay controls style="width: 100%;padding:0;"></video>
+            </div>
+            <div class="row p-0 m-0">
+                <h2 class="m-0 p-1 fw-bold">
+                    {{videoDataByUrl['videoTitle']}}
+                </h2>
+            </div>
+            <div class="row p-0 m-0">
+
+                <div class="watchBox watchBox1 p-0">
+                    <div class="watchBox p-0" style="width:40px;">
+                        <img [src]="'assets/channel_logo/'+videoDataByUrl['channelLogoUrl']" alt="Profile" class=" p-0 m-0 rounded-circle" style="height: 40px;width:40px;">
+                    </div>
+                    <div class="watchBox ps-2">
+                        <h3 class="m-0 p-0 fw-bold text-muted">
+                            {{videoDataByUrl['channelName']}}
+                        </h3>
+                        <span class="text-secondary d-block" style="margin-top:-5px; font-size: 12px;">{{subscriberAndLikes['subscriberCount']}} Subscribers</span>
+                    </div>
+                    <div class="watchBox ps-3">
+                        <button type="button" class="btn btn-secondary btn-black btn-md mx-1 rounded-pill"
+                        (click)="toggleSubscription()">
+                        <i class="bi bi-bell" *ngIf="isSubscribed"></i> {{ isSubscribed ? 'Subscribed' : 'Subscribe' }}
+                      </button>
+                      
+                      
+                    </div>
+                </div>
+
+                <div class="watchBox watchBox2">
+                    <div class="col d-flex">
+
+                        <button type="button" class="btn btn-black btn-sm mx-1 rounded-pill" (click)="toggleLike()">
+                            <i class="bi" [ngClass]="isLiked ? 'bi-hand-thumbs-up-fill' : 'bi-hand-thumbs-up'"></i>
+                        </button>
+                        <button type="button" class="btn btn-black btn-sm mx-1 rounded-pill" (click)="toggleDislike()">
+                          <i class="bi" [ngClass]="isDisliked ? 'bi-hand-thumbs-down-fill':'bi-hand-thumbs-down'"></i>
+                        </button>
+                        <button type="button" class="btn btn-black btn-sm mx-1 rounded-pill" (click)="shareVideo()">
+                          <i class="bi bi-share"></i>
+                        </button>
+                                          
+                        <div class="p-0 btn-group dropup">
+                        <button type="button" class="menu-model subscriberDot"  data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-three-dots"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" >
+                                    <i class="bi bi-clock"></i>&nbsp;&nbsp; Save to watch Later
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" (click)="shareVideo()" >
+                                    <i class="bi bi-share"></i> &nbsp;&nbsp;Share
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" (click)="reportVideo()">
+                                <i class="bi bi-flag"></i> &nbsp;&nbsp;Report</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row p-0 m-0 mt-3">
+                    <div class="col-12 bg-light rounded-3 m-0 p-2">
+                        <span class="text-muted fw-bold">{{videoDataByUrl['views']}} views</span>
+                        <span class="text-muted fw-bold ms-2">{{videoDataByUrl['daysAgo']}} days ago</span>
+                        <input class="form-check-input" type="checkbox" id="check2" name="" hidden>
+                        <div class="collapse bg-light" id="description" data-bs-parent=".form-check">
+                            <p>{{videoDataByUrl['videoDescription']}}</p>
+                        </div>
+                        <label class="form-check-label" for="check2" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="description">
+                            <span style="font-weight: 700;">Show More</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row p-0 m-0 mt-3 mb-3">
+                    <span class="p-0">159 Comments</span>
+                </div>
+                <div class="row p-0 m-0">
+                   <div class="col p-0">
+                    <div class="watchBox replyBox1">
+                        <img [src]="userPictureUrl" alt="Profile" class=" p-0 m-0 rounded-circle" style="height: 40px;width:40px;">
+                    </div>
+                    <div class="watchBox replyBox2 ms-3">
+                        <textarea placeholder="Add a comment" rows="1" [(ngModel)]="comment" (input)="onTextareaInput($event)" required></textarea>
+                    </div>
+                    <div class="row justify-content-end commentBtn-group">
+                       <div style="width:max-content;">
+                        <button class="btn btn-sm btn-light rounded-5">Cancel</button>
+                        <button class="btn btn-sm btn-secondary rounded-5" (click)="commentOnVideo()">Comment</button>
+                       </div>
+                    </div>
+                   </div>
+                </div>
+                <div class="row p-0 m-0"  *ngFor="let x of videoComments">
+                    <div class="col p-0 mb-4">
+                        <div class="watchBox replyBox1">
+                            <img [src]="x.picture ? x.picture : 'https://img.freepik.com/free-icon/user_318-563642.jpg'" alt="Profile" class="p-0 m-0 rounded-circle" style="height: 40px; width: 40px;">
+                        </div>
+                        <div class="watchBox replyBox2 ms-3">
+                            <textarea placeholder="Add a comment" rows="1" (input)="onTextareaInput($event)" readonly>{{x.comment}}</textarea>
+                        </div>
+                     
+                    </div>
+                 </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+           <div class="row">
+                <owl-carousel-o [options]="categoryOptions" >
+                    <ng-container *ngFor="let slide of categoriess">
+                        <ng-template carouselSlide>
+                        <button class="btn btn-light" [class.active]="slide.selected" [attr.href]="'#' + slide.id" data-toggle="tab"  (click)="changeButtonColor(slide.id)">{{ slide.name }}</button>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+                <div class="tab-content clearfix">
+                    <div class="tab-pane mt-2 active" id="1">
+                            <div class="row"> 
+                                    <div class="col-sm-12 mt-2 " *ngFor="let x of allCategoryVideos" (click)="changeVideo(videoPlayer, 'assets/videos/'+x.videoUrl )">
+                                      <a [routerLink]="['/watch']" [queryParams]="{ v: x.videoUrl }" >
+                                        <div class="card shadow-sm" >
+                                          <div class="card-body p-0 rounded-2" > 
+                                            <div class="row">
+                                                <div class="col-5 m-0" >
+                                                    <img [src]="'assets/thumbnails/' + x.thumbnailUrl" alt="" style="width:100%; height: 100%;" class="rounded-3 p-0 m-0">
+                                                </div>
+                                                <div class="col-7 p-0 m-0">
+                                                    <div class="row p-1 m-0 pe-3 ps-0 pt-0">
+                                                    <div class="col">
+                                                        <h3 style="color:rgba(32, 32, 32, 0.8);font-weight: 550; font-size: 14px;line-height: 20px; margin: 5px 0; height: 40px;overflow: hidden;display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;text-overflow: ellipsis;">
+                                                            {{x.videoTitle}}
+                                                        </h3>
+                                                        <span class="fw-bold d-block text-secondary" style="font-size: 12px;;">{{x.channelName}} <i class="bi bi-check-circle-fill"></i></span>
+                                                        <span class="text-secondary fw-bold d-block" style="font-size: 12px;;">{{x.views}} views<i class="bi bi-dot"></i> {{x.daysAgoFormatted}}</span>
+                                                      </div>
+                                                      <div class="p-0" style="width: 35px; float: right;" >
+                                                        <div class=" p-0 btn-group dropup">
+                                                          <button type="button" class="menu-model" id="abc" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                          </button>
+                                                          <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item" href="">
+                                                                    <i class="bi bi-clock"></i>&nbsp;&nbsp; Save to watch Later
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="">
+                                                                    <i class="bi bi-share"></i> &nbsp;&nbsp;Share
+                                                                </a>
+                                                            </li>
+                                                            <li><hr class="dropdown-divider"></li>
+                                                            <li><a class="dropdown-item" href="">
+                                                                <i class="bi bi-flag"></i> &nbsp;&nbsp;Report</a></li>
+                                                          </ul>
+                                                        </div>
+                                                      </div>
+                                                      </div>
+                                                </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </a>
+                                    </div>
+                                    
+                            </div>
+                            <!-- <div class="row mt-5">
+                                <h2>Shorts</h2>
+                                <owl-carousel-o [options]="shorts" class="mt-1">
+                                    <ng-container *ngFor="let slide of categories">
+                                        <ng-template carouselSlide>
+                                        <div class="card shorts">
+                                            <img src="assets/shortsThumbnails/shorts1.PNG" height="240px;" class="rounded-3">
+                                            <div class="card-body p-0">
+                                            <div class="row p-0 m-0 mt-2">
+                                                <div class="col " style="width:calc(100% - 15px); max-height:100px;">
+                                                <h3>Tere Vaaste with Vicky Kaushal 🥰 #ZaraHatkeZaraBachke </h3>
+                                                </div>
+                                                <div class="col p-0 m-0" style="width:15px;">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </ng-template>
+                                    </ng-container>
+                                </owl-carousel-o>
+                            </div> -->
+                    </div>
+                    <div class="tab-pane mt-5 " id="2">
+                        <h3>2</h3>
+                    </div>
+                    <div class="tab-pane mt-5" id="3">
+                        <h3>3</h3>
+                    </div>
+                    <div class="tab-pane mt-5" id="4">
+                        <h3>4</h3>
+                    </div>
+                </div>
+           </div>
+
+        </div>
+    </div>
+</div>

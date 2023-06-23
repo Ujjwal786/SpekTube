@@ -1,0 +1,39 @@
+
+<div class="form-pop-up p-4" style="max-width:350px;">
+    <form class="example-form"  [formGroup]="myForm" (ngSubmit)="submitForm()">
+      <h1 class="text-center">Admin Sign In</h1>
+      
+      <mat-form-field class="example-full-width" >
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" >
+        <mat-label>Password</mat-label>
+        <input [type]="hidepsd ? 'password' : 'text'" matInput [formControl]="passwordFormControl">
+        <button mat-icon-button matSuffix (click)="hidepsd = !hidepsd" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepsd">
+          <i class="bi {{hidepsd ? 'bi-eye-fill' : 'bi-eye-slash-fill'}}"></i>
+
+        </button>
+        <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
+          Please enter valid password
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Passowrd is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <h4 *ngIf="invalid" class="text-center text-danger">Invalid Email and Password</h4>
+      <div class="example-button-row ">
+       
+        <button class="btn btn-primary btn-lg mb-3" style=" display:block;width:50%; margin:0 auto;">
+          Sign In
+        </button>
+      </div>
+    </form>
+  </div>

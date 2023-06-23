@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Report Video</h1>
+<div mat-dialog-content>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="reportValue">
+      <mat-radio-button  color="primary" class="example-radio-button" *ngFor="let problem of reportIssue" [value]="problem">
+        {{problem}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div>Flagged videos and users are reviewed by YouTube staff 24 hours a day, seven days a week to determine whether they violate Community Guidelines. Accounts are penalised for Community Guidelines violations, and serious or repeated violations can lead to account termination. </div>
+    
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>No</button>
+  <button mat-button mat-dialog-close cdkFocusInitial [disabled]="!reportValue" (click)="report()">Ok</button>
+</div>

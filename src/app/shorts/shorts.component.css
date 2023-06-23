@@ -1,0 +1,89 @@
+
+.vertical.carousel .carousel-item {
+   overflow: hidden;
+   width:100%;
+   height: 400px;
+  
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+
+.vertical.carousel .carousel-item-next:not(.carousel-item-start),
+.vertical.carousel .active.carousel-item-end {
+    transform: translateY(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-end),
+.active.carousel-item-start {
+    transform: translateY(-100%);
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    transform: rotateZ(90deg);
+}
+
+
+
+.shortsVideo{
+    
+    /* min-width:380px; */
+    width:max-content;
+    height:440px; position: absolute;left:50%; transform: translateX(-50%);
+  
+}
+
+.shortsBtnGroup {
+    width: 70px;
+    float: left;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+
+
+  
+
+.shortsBtnGroup div label{
+    height: 46px;
+    width: 46px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.shortsBtnGroup div span{
+    text-align: center;
+    display: block;
+    width:46px;
+
+}
+
+
+
+.commentSection{
+    display: none;
+    transition: all 0.2s ease-in-out;
+}
+#commentOpen:checked   #shortsVideo {
+    background-color: red;
+}
+#muteBtn{
+    position:absolute;
+    right: 0;
+    z-index: 1111;
+}
+#playPauseBtn{
+    position: absolute;
+    top: 0;
+    z-index: 1111;
+}

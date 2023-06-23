@@ -1,0 +1,136 @@
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Upload Video</mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="padding: 20px;">
+    <div class="row justify-content-center" style=" max-height: 75vh;">
+      <mat-stepper linear #stepper  >
+        
+
+        <mat-step [stepControl]="firstFormGroup" [completed]="firstFormGroup.valid">
+          <form [formGroup]="firstFormGroup" >
+            <ng-template matStepLabel>Upload Video</ng-template>
+           
+            <div class="row justify-content-center" >
+              <div class="drop-zone">
+                <div class="upload-icon">
+                    <div class="arrow-up"></div>
+                    <div class="bar"></div>
+                </div>
+  
+                <h4>Upload your File Here</h4>
+                <label for="video" class="upload-file">
+                    select files
+                    <input type="file" hidden id="video" formControlName="videoFile" (change)="onFileSelected($event)" accept=".mp4, .webm" required>
+                </label>
+            </div>
+            <div class="card-footer">
+                <small>Please be sure to upload only
+                    <strong>.mp4</strong>,<strong>.wpm</strong>
+                </small><br>
+                <small>Remember your file size should be less than $MB</small>
+            </div>
+            </div>
+                     
+            <div mat-dialog-actions align="end">
+             <button mat-button matStepperNext>Next</button>
+            </div>
+            
+          </form>
+        </mat-step>
+  
+        <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Details</ng-template>
+            <div class="row justify-content-center" style="height: 80%;">
+              <div class="col-7">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Title</mat-label>
+                  <textarea class="titleTextarea" (input)="onTextareaTitleInput($event)" rows="2" matInput formControlName="titleTextArea" #titleCount maxlength="100"  style="resize: none;"></textarea>
+                  <mat-hint align="end">{{titleCount.value.length}} / 100</mat-hint>
+                </mat-form-field>
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Description</mat-label>
+                  <textarea [(ngModel)]="description" class="descriptionTextarea" (input)="onTextareaDescriptionInput($event)" rows="3" matInput formControlName="descriptionTextArea" #descriptionCount maxlength="2000"  style="resize: none;"></textarea>
+                  <mat-hint align="end">{{descriptionCount.value.length}} / 2000</mat-hint>
+                </mat-form-field>
+  
+                <span>
+                  Thumbnail
+                </span>
+                <p>Select or upload a picture that shows what's in your video. A good thumbnail stands out and draws viewers' attention.</p>
+               
+                <div *ngIf="!thumbnail" class="row p-0 m-0" style="width: 130px; height: 80px; border: 1px solid black; position: relative; border-radius: 5px; overflow: hidden;">
+                  <label for="thumbnailId">
+                    <i class="bi bi-card-image" style="font-size: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+                    <input type="file" id="thumbnailId" formControlName="thumbnail" (change)="onThumbnailSelected($event)" accept=".png, .jpg, .PNG, .JPG" required hidden>
+                  </label>
+                </div>
+                
+                <div *ngIf="thumbnail" class="row p-0 m-0" style="width: 130px; height: 80px; border: 1px solid black; position: relative; border-radius: 5px; overflow: hidden;">
+                  <img [src]="'assets/thumbnails/'+imgSrcc" alt="" style="width: 130px; height: 80px;">
+                </div>
+
+                <mat-form-field class="input-full-width" appearance="outline">
+                  <mat-label>Playlist</mat-label>
+                  <mat-select formControlName="playlistFormControl" [multiple]="playlistOptions.length > 0">
+                    <mat-option *ngIf="playlistOptions.length === 0" disabled></mat-option>
+                    <mat-option *ngFor="let p of playlistOptions" [value]="p.playList_Name">{{ p.playList_Name }}</mat-option>
+                    <button mat-raised-button (click)="openPlayListDialog()" style="margin-left: 15px;">Create New Playlist</button>
+                  </mat-select>
+                </mat-form-field>
+                
+          
+                <mat-form-field class="input-full-width" appearance="outline">
+                  <mat-label>Category</mat-label>
+                  <mat-select formControlName="categoryFormControl">
+                    <mat-option *ngFor="let category of categoryOptions" [value]="category.category_name">{{category.category_name}}</mat-option> 
+                  </mat-select>
+                </mat-form-field>
+          
+                <mat-form-field class="input-full-width" appearance="outline">
+                  <mat-label>Scope</mat-label>
+                  <mat-select formControlName="scopeInputArea">
+                    <mat-option *ngFor="let scope of scopeOptions" [value]="scope">{{ scope }}</mat-option>
+                  </mat-select>
+                </mat-form-field>  
+                 
+              </div>
+              <div class="col-5 pt-3" >
+                <div class="row p-0 m-0 bg-danger">
+                  <video [src]="'assets/videos/'+videoSrcc" controls style="width: 100%;padding:0;"></video>
+                </div>
+                <div class="row p-0 m-0 ">
+                 <mat-form-field class="example-full-width p-0" >
+                  <mat-label>Video Link</mat-label>
+                    <input matInput [value]="'https://localhost:4200/watch?v='+videoSrcc" readonly="readonly">
+                 </mat-form-field>
+                 <mat-form-field class="example-full-width p-0" >
+                  <mat-label>File Name</mat-label>
+                  <input matInput [value]="videoFileName" readonly="readonly">
+               </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div align="end">
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Check</ng-template>
+          <p>You are now done.</p>
+          <div align="end">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="onSave()">Save</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+     </div>
+  </mat-card-content>
+</mat-card>
+
+

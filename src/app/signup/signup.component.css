@@ -1,0 +1,24 @@
+.form-pop-up{
+    width:410px;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:30px;
+    
+}
+a{
+    cursor: pointer;
+}
+form{
+    width:350px;
+    height: max-content;
+}
+
+
+.example-container .example-full-width{
+    width: 47%;
+  }
+  .example-container .example-full-width:last-child{
+    float:right;
+  }

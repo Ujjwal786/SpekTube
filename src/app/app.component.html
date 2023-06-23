@@ -1,0 +1,316 @@
+<input type="checkbox" id="check" hidden>
+
+<header id="header" class="header fixed-top d-flex align-items-center">
+    
+    <div class="d-flex align-items-center justify-content-between">
+        <label for="check">
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+          </label>&nbsp;&nbsp;
+        <a href="" class="logo d-flex align-items-center" >
+        <img src="https://img.freepik.com/free-icon/youtube_318-566773.jpg" alt="">
+        <span >SpekTube</span>
+      </a>
+    
+    </div>
+  
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+  
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+  
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="btn nav-link nav-icon" href="#" data-bs-toggle="dropdown" style="font-size: 14px;border:1px solid gray; padding:5px 10px;">
+            <i class="bi bi-camera-video" style="font-size: 16px;;"></i>
+            CREATE
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" >
+            <li class="dropdown-header" (click)="openVideoUploadDialog()">
+              <a>Upload Video</a>
+            </li>
+            <li class="dropdown-header">
+              <a>Upload Shorts</a>
+            </li>
+          </ul>
+        </li>
+  
+        <div *ngIf="!isLoggedIn; else loginSection" style="margin-right: 15px;">
+            <button class="btn btn-light btn-outline-primary rounded-pill " (click)="openSignInDialog()"><i class="bi bi-person-circle"></i> Sign in</button>
+        </div>
+
+        <ng-template #loginSection>
+            <li class="nav-item dropdown pe-3">
+              <a   class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown" >
+                <img [src]="userInfo.picture" alt="Profile Picture" class="rounded-circle">
+              </a>
+      
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                <li class="dropdown-header">
+                  <h6>
+                    <a  class="nav-link nav-profile pe-0 pb-2" data-bs-toggle="dropdown" >
+                    <img [src]="userInfo.picture" alt="Profile Picture" class="rounded-circle">
+                  </a>
+                  {{userInfo.name}}</h6>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+      
+                <!-- <li>
+                  <a class="dropdown-item d-flex align-items-center" >
+                    <i class="bi bi-person"></i>
+                    <span>My Profile</span>
+                  </a>
+                </li> -->
+
+                <li *ngIf="">
+                  <a class="dropdown-item d-flex align-items-center" [routerLink]="['studio/content']">
+                    <i class="bi bi-person"></i>
+                    <span>YouTube Studio</span>
+                  </a>
+                </li>
+               
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+      
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" (click)="logout()" >
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Sign Out</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+        </ng-template>
+  
+      </ul>
+    </nav>
+  
+</header>
+  
+<aside id="sidebar" class="sidebar" >
+
+  <ul class="sidebar-nav" id="sidebar-nav" *ngIf="!isStudio && !isAdmin ">
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/home']">
+        <i class="bi bi-house-fill"></i>
+        <span>Home</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" [routerLink]="['/shorts']">
+        <i class="bi bi-play-btn"></i>
+        <span>Shorts</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-collection-play"></i>
+        <span>Subscriptions</span>
+      </a>
+    </li>
+    <hr>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-collection"></i>
+        <span>Library</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-clock-history"></i>
+        <span>History</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-play-btn"></i>
+        <span>Your videos</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-clock-fill"></i>
+        <span>Watch Later</span>
+      </a>
+    </li>
+   
+    
+    <hr>
+    <h3>Explore</h3>
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-grid"></i>
+        <span>Trending</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-music-note"></i>
+        <span>Music</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-film"></i>
+        <span>Films</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-newspaper"></i>
+        <span>News</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-trophy"></i>
+        <span>Sport</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-book"></i>
+        <span>Learning</span>
+      </a>
+    </li>
+    <hr>
+    <h3>More from YouTube</h3>
+   
+    <li class="nav-item">
+      <a class="nav-link collapsed" [routerLink]="['/studio/dashboard']">
+        <i class="bi bi-youtube"></i>
+        <span>YouTube Studio</span>
+      </a>
+    </li>
+    <!-- <li class="nav-item">
+      <a class="nav-link collapsed" >
+        <i class="bi bi-youtube"></i>
+        <span>YouTube Music</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="">
+        <i class="bi bi-youtube"></i>
+        <span>YouTube Kids</span>
+      </a>
+    </li> -->
+    
+    <!-- <hr>
+   
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="">
+        <i class="bi bi-exclamation-octagon-fill"></i>
+        <span>Send feedback</span>
+      </a>
+    </li> -->
+  </ul>
+  <ul class="sidebar-nav" id="sidebar-nav" *ngIf="isStudio">
+    <div class="row rounded-circle justify-content-center mb-4">
+        <div class="p-0 channel-logo rounded-circle bg-danger" style="width:120px; height:120px;">
+          <img [src]="'assets/channel_logo/'+userChannelDetails.channel_Logo_Url" class="rounded-circle" height="120px" width="120px" >
+        </div>
+        <h4 class="text-center p-0 m-0">Your Channel</h4>
+        <span class="text-center p-0 m-0">{{userChannelDetails.channel_Name}}</span>
+    </div>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/studio/dashboard']" >
+        <i class="bi bi-house-fill"></i>
+        <span>Dashboard</span>
+        
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" [routerLink]="['/studio/content']" >
+        <i class="bi bi-play-btn"></i>
+        <span>Content</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" [routerLink]="['/studio/analytics']"  >
+        <i class="bi bi-collection-play"></i>
+        <span>Analytics</span>
+      </a>
+    </li>
+
+    </ul>
+    <ul class="sidebar-nav" id="sidebar-nav" *ngIf="isAdmin">
+      <div class="row rounded-circle justify-content-center mb-4">
+          <div class="p-0 channel-logo rounded-circle bg-danger" style="width:120px; height:120px;">
+            <img [src]="'assets/channel_logo/'+userChannelDetails.channel_Logo_Url" class="rounded-circle" height="120px" width="120px" >
+          </div>
+          <h4 class="text-center p-0 m-0">Your Channel</h4>
+          <span class="text-center p-0 m-0">{{userChannelDetails.channel_Name}}</span>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/admin/dashboard']" >
+          <i class="bi bi-house-fill"></i>
+          <span>Dashboard</span>
+          
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" [routerLink]="['/admin/content']" >
+          <i class="bi bi-play-btn"></i>
+          <span>Content</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" [routerLink]="['/admin/analytics']"  >
+          <i class="bi bi-collection-play"></i>
+          <span>Analytics</span>
+        </a>
+      </li>
+  
+      </ul>
+
+</aside>
+  
+
+
+
+
+
+
+
+
+
+
+
+<main id="main" class="main"  >
+  <section class="section dashboard ">
+    <div class="row justify-content-end" id="abcd">
+        <router-outlet></router-outlet>
+    </div>
+  </section>
+</main>
+
+
+<!--   
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>YouTube</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Designed by <a href="">Desk Champions</a>
+    </div>
+  </footer> -->

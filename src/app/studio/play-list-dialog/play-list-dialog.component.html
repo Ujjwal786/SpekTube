@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Create PlayList</h1>
+<form [formGroup]="playListForm">
+    <div mat-dialog-content>
+    
+    <mat-form-field>
+        <mat-label>PlayList Name</mat-label>
+        <input matInput formControlName="playListFormControl">
+    </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button (click)="savePlayList()" cdkFocusInitial>Ok</button>
+    </div>
+</form>

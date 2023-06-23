@@ -1,0 +1,90 @@
+a{
+    text-decoration: none;
+}
+
+
+
+
+
+.watchBox{
+    float: left;
+}
+.watchBox1{
+    width:calc(100% - 180px);
+}
+.watchBox2{
+    width:180px;
+}
+
+.menu-model{
+    display: none;
+    padding:0;
+    margin:0;
+    background:none;
+    border:none;
+    outline: none;
+    transition: 1 all ease-out;
+    border-radius: 50%;
+    width:40px;
+    height: 40px;
+  }
+  .menu-model.subscriberDot{
+    display: block;
+  }
+  .card-body:hover .menu-model {
+    display: block;
+  }
+ .menu-model:active{
+    background-color: whitesmoke;;
+  }
+
+  .card{
+    border:none;
+    
+  }
+
+  #description {
+    font-size: 15px;
+    line-height: 23px;
+    height: 50px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+
+  #check2:checked ~ #description {
+    height: auto;
+    overflow: visible;
+    display: block;
+    -webkit-line-clamp: initial;
+    -webkit-box-orient: initial;
+    text-overflow: initial;
+  }
+  
+  
+.replyBox1{
+    width: 40px;
+}
+.replyBox2{
+    width:calc(100% - 70px);
+    padding-top: 5px;
+}
+
+
+.replyBox2 textarea {
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 1.5em; 
+    transition: all 0.3s; 
+  }
+  
+  .replyBox2 textarea:focus {
+    border-bottom-color: blue; /* Change border color on hover */
+  }

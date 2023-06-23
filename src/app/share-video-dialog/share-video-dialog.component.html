@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Share Video</h1>
+<div mat-dialog-content>
+  <span style="word-break: break-all;">{{videoUrl}}</span>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-icon-button mat-dialog-close cdkFocusInitial (click)="copyLink()">
+    <i class="bi bi-clipboard"></i>
+  </button>
+  <button mat-button mat-dialog-close>Ok</button>
+</div>

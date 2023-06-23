@@ -1,0 +1,43 @@
+
+
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Create Channel</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="padding: 20px;">
+        <div class="row justify-content-center">
+            <label for="channelLogo" style="width: max-content;">
+            <div class="channel-logo p-0 m-0 rounded-circle" style="width: 150px; height:150px;background-color: whitesmoke;">
+                <img [src]="logoSrc" class="rounded-circle" height="100%" width="100%">
+            </div>
+                <input type="file" id="channelLogo" #fileInput (change)="onLogoSelected($event)" accept=".png, .jpg, .PNG, .JPG" hidden>
+            </label>
+       </div>
+            
+       <form [formGroup]="myForm" (ngSubmit)="createChannel()">
+            <div class="row p-0 m-0">
+                    <div class="col-12 p-3 m-0">
+                    <mat-form-field class="input-full-width">
+                            <mat-label>Channel Name</mat-label>
+                            <input matInput placeholder="Your Channle Name" formControlName="channelName">
+                            <mat-error *ngIf="channelName.hasError('required')">
+                                Channel name is <strong>required</strong>
+                            </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-full-width">
+                            <mat-label>Channel Description</mat-label>
+                            <input matInput placeholder="Your Channle Description" formControlName="channelDescription">
+                            <mat-error *ngIf="channelDescription.hasError('required')">
+                                Description is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <mat-card-actions align="end" style="padding: 0;">
+                        <button mat-raised-button>Save</button>
+                    </mat-card-actions>
+            </div>
+        </form>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+*{
+  margin:0;
+  padding:0;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  mat-form-field{
+    margin-top: 10px;
+   
+  }
+  .example-button-row{
+   
+    margin-top: 20px;
+    
+  }
+  .form-btn-group button{
+    width:45%;
+  }
+  .form-btn-group button:last-child{
+    float: right !important;
+    width: 52%;
+  }
+
+  
+  .example-container .example-full-width{
+    width: 47%;
+  }
+  .example-container .example-full-width:last-child{
+    float:right;
+  }
+  
+  button.example-custom-date-class {
+    background: orange;
+    border-radius: 100%;
+  }
+ 
+
+.input-full-width{
+  width: 100%;
+}

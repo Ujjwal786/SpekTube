@@ -1,0 +1,27 @@
+.form-pop-up{
+    width:380px;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:30px;
+    
+}
+a{
+    cursor: pointer;
+}
+form{
+    width:320px;
+    height: max-content;
+}
+  .google-signin-btn{
+    font-weight: bold;
+    color:gray;
+    font-size:16px;
+    display: block;;
+    margin:0 auto;
+    border:1px solid gray;
+  }
+.google-signin-btn:hover{
+    background-color: whitesmoke;
+}
